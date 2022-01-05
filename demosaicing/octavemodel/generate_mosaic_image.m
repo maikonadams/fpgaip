@@ -2,7 +2,7 @@ function generate_mosaic_image(varargin)
   
   p = inputParser();
   
-  p.addParamValue('input_file_location'         , '../../../data/truecolorimages/' ); %jpg
+  p.addParamValue('input_file_location'         , 'input/' ); %jpg
   p.addParamValue('input_image_file'            , 'kodim07.png'); 
   p.addParamValue('ISP_pixel_size'              ,    8);
   p.addParamValue('G_IMG_WIDTH', 768); %768
@@ -10,7 +10,7 @@ function generate_mosaic_image(varargin)
   p.addParamValue('G_PIXEL_WIDTH', 8);
   p.addParamValue('num_of_frames', 1);
   
-  p.addParamValue('save_location'               , '../../../rtlsimlib/isp/demosaicing/input_data');
+  p.addParamValue('save_location'               , '../rtl/input_data');
   p.addParamValue('save_input_image'            , 'input_image'); 
   p.addParamValue('save_expected_output'        , 'expected_output_image'); 
   

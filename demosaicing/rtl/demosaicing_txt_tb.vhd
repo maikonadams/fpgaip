@@ -15,7 +15,7 @@ generic
   gs_IMAGE_input                            : string  := 
     "../input_data/input_image.txt";
   gs_IMAGE_expected_output                  : string  := 
-    "../output_data/expected_output_image.txt";
+    "../input_data/expected_output_image.txt";
   gs_rtl_output                             : string  := 
     "../output_data/rtl_output.txt";
   GI_PIXEL_WIDTH                            : integer := 8; 
