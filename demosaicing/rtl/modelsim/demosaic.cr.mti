@@ -1,0 +1,140 @@
+/home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_convolution.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_convolution.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Loading package comm_types_pkg
+-- Compiling entity demosaicing_convolution
+-- Compiling architecture Behavioral of demosaicing_convolution
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_router.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_router.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Loading package comm_types_pkg
+-- Compiling entity demosaicing_router
+-- Compiling architecture Behavioral of demosaicing_router
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/module_testbench.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/module_testbench.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package std_logic_textio
+-- Loading package sim_file_pkg
+-- Compiling entity module_testbench
+-- Compiling architecture sim of module_testbench
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_shiftreg.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_shiftreg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package comm_types_pkg
+-- Compiling entity demosaicing_shiftreg
+-- Compiling architecture Behavioral of demosaicing_shiftreg
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd {0 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package std_logic_textio
+-- Loading package comm_types_pkg
+-- Loading package util
+-- Compiling entity demosaicing_fifo5_tb
+-- Compiling architecture behavior of demosaicing_fifo5_tb
+-- Loading entity demosaicing_fifo5
+** Error: (vcom-11) Could not find work.demosaicing_fifo5gen.
+** Error (suppressible): /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd(113): (vcom-1195) Cannot find expanded name "work.demosaicing_fifo5gen".
+** Error: /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd(113): Unknown expanded name.
+** Error: (vcom-11) Could not find work.demosaicing_fifo5genv2.
+** Error (suppressible): /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd(132): (vcom-1195) Cannot find expanded name "work.demosaicing_fifo5genv2".
+** Error: /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd(132): Unknown expanded name.
+** Error: /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd(265): VHDL Compiler exiting
+
+} {16.0 17.0 18.0 20.0 21.0 23.0} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/rd_file_axis.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/rd_file_axis.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_textio
+-- Compiling entity rd_file_axis
+-- Compiling architecture behaviour of rd_file_axis
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Loading package comm_types_pkg
+-- Compiling entity demosaicing
+-- Compiling architecture Behavioral of demosaicing
+-- Loading entity demosaicing_ctrl
+-- Loading entity demosaicing_fifo5
+-- Loading entity demosaicing_router
+-- Loading entity demosaicing_convolution
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Loading package comm_types_pkg
+-- Compiling entity demosaicing_fifo5
+-- Compiling architecture Behavioral of demosaicing_fifo5
+-- Loading entity demosaicing_shiftreg
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_ctrl.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_ctrl.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Compiling entity demosaicing_ctrl
+-- Compiling architecture Behavioral of demosaicing_ctrl
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/comm_types_pkg.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/comm_types_pkg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package comm_types_pkg
+-- Compiling package body comm_types_pkg
+-- Loading package comm_types_pkg
+
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/sim_file_pkg.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/sim_file_pkg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package std_logic_textio
+-- Compiling package sim_file_pkg
+-- Compiling package body sim_file_pkg
+-- Loading package sim_file_pkg
+
+} {} {}}

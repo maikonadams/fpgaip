@@ -13,11 +13,11 @@ entity demosaicing_txt_tb is
 generic
 (
   gs_IMAGE_input                            : string  := 
-    "/home/maikon/Dropbox/PhDSafe/ong_prj/rtlsimlib/isp/demosaicing/input_data/input_image.txt";
+    "../input_data/input_image.txt";
   gs_IMAGE_expected_output                  : string  := 
-    "/home/maikon/Dropbox/PhDSafe/ong_prj/rtlsimlib/isp/demosaicing/input_data/expected_output_image.txt";
+    "../output_data/expected_output_image.txt";
   gs_rtl_output                             : string  := 
-    "/home/maikon/Dropbox/PhDSafe/ong_prj/rtlsimlib/isp/demosaicing/output_data/rtl_output.txt";
+    "../output_data/rtl_output.txt";
   GI_PIXEL_WIDTH                            : integer := 8; 
   GI_NUM_FRAMES                             : integer := 1;
   GI_IMG_WIDTH                              : integer := 768;
