@@ -69,6 +69,9 @@ signal sl_valid_fifo_c0          : std_logic; --
 signal sl_valid_fifo_c1          : std_logic;
 signal sl_valid_fifo_c2          : std_logic;
 signal sl_valid_fifo_c3          : std_logic;
+signal sl_valid_fifo_c4          : std_logic; -- 
+signal sl_valid_fifo_c5          : std_logic;
+signal sl_valid_fifo_c6          : std_logic;
 signal sl_valid_demosaic         : std_logic; -- start of output frame
 
 signal sl_s_ready                : std_logic;
@@ -153,10 +156,14 @@ begin
     sl_valid_fifo_c1  <= sl_valid_fifo_c0;
     sl_valid_fifo_c2  <= sl_valid_fifo_c1;
     sl_valid_fifo_c3  <= sl_valid_fifo_c2;
+    sl_valid_fifo_c4  <= sl_valid_fifo_c3;
+    sl_valid_fifo_c5  <= sl_valid_fifo_c4;
+    sl_valid_fifo_c6  <= sl_valid_fifo_c5;
   end if;
 end process;
 
-sl_valid_demosaic     <= sl_valid_fifo_c3; 
+--sl_valid_demosaic     <= sl_valid_fifo_c3; 
+  sl_valid_demosaic   <= sl_valid_fifo_c6;
 
 process(il_clk)
 begin

@@ -112,11 +112,17 @@ architecture Behavioral of demosaicing_convolution is
   ------------------------------------------------------------------------------
   -- Signals / Variables
   ------------------------------------------------------------------------------
+  signal sv_bgbgrr_codez1               : std_logic_vector(3 downto 0);
+  signal sv_bgbgrr_codez2               : std_logic_vector(3 downto 0);
+  signal sv_bgbgrr_codez3               : std_logic_vector(3 downto 0);
+  
   signal mask                           : std_logic_vector_xN(CI_NUM_OF_COEF -1 downto 0)(GI_PIXEL_WIDTH -1 downto 0);
   signal maskz1                         : std_logic_vector(GI_PIXEL_WIDTH -1 downto 0);
   signal maskz2                         : std_logic_vector(GI_PIXEL_WIDTH -1 downto 0);
   signal maskz3                         : std_logic_vector(GI_PIXEL_WIDTH -1 downto 0);
-  
+  signal maskz4                         : std_logic_vector(GI_PIXEL_WIDTH -1 downto 0);
+  signal maskz5                         : std_logic_vector(GI_PIXEL_WIDTH -1 downto 0);
+
   signal testdsp                        : std_logic_vector(GI_PIXEL_WIDTH*2 -1 downto 0);
   
   signal conv0                          : signed_xN(CI_NUM_OF_COEF -1  downto 0)(CI_DSP_PIX_WIDTH  downto 0);
@@ -128,9 +134,49 @@ architecture Behavioral of demosaicing_convolution is
   signal rgbtemp00                      : signed(CI_DSP_PIX_WIDTH  downto 0);
   signal rgbtemp11                      : signed(CI_DSP_PIX_WIDTH  downto 0);
   
+  signal rgbtemps00                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps10                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps01                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps11                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps02                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps12                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps03                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps13                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps04                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps14                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps05                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps15                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
+  signal rgbtemps06                    : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtemps16                    : signed(CI_DSP_PIX_WIDTH  downto 0);
+     
+  signal rgbtempss00                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempss10                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+     
+  signal rgbtempss01                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempss11                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+     
+  signal rgbtempss02                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempss12                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+     
+  signal rgbtempss03                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempss13                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+     
+  signal rgbtempsss00                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempsss10                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+          
+  signal rgbtempsss01                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  signal rgbtempsss11                     : signed(CI_DSP_PIX_WIDTH  downto 0);
+  
   attribute use_dsp48                   : string;
   attribute use_dsp48 of conv0          : signal is GS_INC_DSP_USAGE;
   attribute use_dsp48 of conv1          : signal is GS_INC_DSP_USAGE;
+  
 begin
 
   mask(12) <= ivn_mask(22);
@@ -152,16 +198,27 @@ begin
     if rising_edge(il_clk) then
       maskz1 <= ivn_mask(12);   
       maskz2 <= maskz1;
-      maskz3 <= maskz2; 
+      maskz3 <= maskz2;
+      maskz4 <= maskz3;
+      maskz5 <= maskz4;
+    end if;
+  end process;
+
+  process(il_clk)
+  begin
+    if rising_edge(il_clk) then
+      sv_bgbgrr_codez1 <= iv_bgbgrr_code;
+      sv_bgbgrr_codez2 <= sv_bgbgrr_codez1; 
+      sv_bgbgrr_codez3 <= sv_bgbgrr_codez2;
     end if;
   end process;
   
   process(il_clk)
-    begin
-      if rising_edge(il_clk) then
-        testdsp <= std_logic_vector(signed(maskz1) * signed(maskz2));   
-      end if;
-    end process;
+  begin
+    if rising_edge(il_clk) then
+      testdsp <= std_logic_vector(signed(maskz1) * signed(maskz2));   
+    end if;
+  end process;
 
   process(il_clk)
   begin
@@ -188,16 +245,87 @@ begin
     end if;
   end process;
 
+--  process(il_clk)
+--  begin
+--    if rising_edge(il_clk) then 
+--      rgbtemp0 <= (conv0(0) + conv0(1)) + (conv0(2) + conv0(3)) + (conv0(4) + conv0(5)) 
+--                + (conv0(6) + conv0(7)) + (conv0(8) + conv0(9)) + (conv0(10) + conv0(11)) +conv0(12);
+--      
+--      rgbtemp1 <= (conv1(0) + conv1(1)) + (conv1(2) + conv1(3)) + (conv1(4) + conv1(5)) 
+--                + (conv1(6) + conv1(7)) + (conv1(8) + conv1(9)) + (conv1(10) + conv1(11)) +conv1(12) ;   
+--    end if;
+--  end process; 
+
+-------------------------------------
+----------- CLK 1
+--------------------------------------
   process(il_clk)
   begin
     if rising_edge(il_clk) then 
-      rgbtemp0 <= (conv0(0) + conv0(1)) + (conv0(2) + conv0(3)) + (conv0(4) + conv0(5)) 
-                + (conv0(6) + conv0(7)) + (conv0(8) + conv0(9)) + (conv0(10) + conv0(11)) +conv0(12);
+      rgbtemps00 <=            (conv0(0) + conv0(1));  
+      rgbtemps01 <=            (conv0(2) + conv0(3)); 
+      rgbtemps02 <=            (conv0(4) + conv0(5)); 
+      rgbtemps03 <=            (conv0(6) + conv0(7));
+      rgbtemps04 <=            (conv0(8) + conv0(9));
+      rgbtemps05 <=            (conv0(10) + conv0(11)); 
+      rgbtemps06 <=            conv0(12);
       
-      rgbtemp1 <= (conv1(0) + conv1(1)) + (conv1(2) + conv1(3)) + (conv1(4) + conv1(5)) 
-                + (conv1(6) + conv1(7)) + (conv1(8) + conv1(9)) + (conv1(10) + conv1(11)) +conv1(12) ;   
+      rgbtemps10 <=            (conv1(0) + conv1(1));  
+      rgbtemps11 <=            (conv1(2) + conv1(3)); 
+      rgbtemps12 <=            (conv1(4) + conv1(5)); 
+      rgbtemps13 <=            (conv1(6) + conv1(7));
+      rgbtemps14 <=            (conv1(8) + conv1(9));
+      rgbtemps15 <=            (conv1(10) + conv1(11)); 
+      rgbtemps16 <=            conv1(12);  
     end if;
   end process; 
+
+-------------------------------------
+----------- CLK 2
+--------------------------------------
+  process(il_clk)
+  begin
+    if rising_edge(il_clk) then
+       rgbtempss00 <= rgbtemps00 + rgbtemps01; 
+       rgbtempss01 <= rgbtemps02 + rgbtemps03;
+       rgbtempss02 <= rgbtemps04 + rgbtemps05;
+       rgbtempss03 <= rgbtemps06;
+       
+       rgbtempss10 <= rgbtemps10 + rgbtemps11; 
+       rgbtempss11 <= rgbtemps12 + rgbtemps13;
+       rgbtempss12 <= rgbtemps14 + rgbtemps15;
+       rgbtempss13 <= rgbtemps16 ;
+     end if;
+   end process; 
+
+-------------------------------------
+----------- CLK 3
+--------------------------------------
+  process(il_clk)
+  begin
+    if rising_edge(il_clk) then
+      rgbtempsss00 <= rgbtempss00 + rgbtempss01; 
+      rgbtempsss01 <= rgbtempss02 + rgbtempss03;
+          
+      rgbtempsss10 <= rgbtempss10 + rgbtempss11; 
+      rgbtempsss11 <= rgbtempss12 + rgbtempss13;    
+      end if;
+  end process; 
+  
+-------------------------------------
+----------- CLK 4
+-------------------------------------- 
+   
+  process(il_clk)
+  begin
+    if rising_edge(il_clk) then
+      rgbtemp0 <= rgbtempsss00 + rgbtempsss01; 
+                
+      rgbtemp1 <= rgbtempsss10 + rgbtempsss11;
+    end if;
+  end process; 
+  
+  
 
   -- HANDLING UNDERFLOW AND OVERFLOW
 
@@ -213,26 +341,26 @@ begin
   process(il_clk)
   begin
     if rising_edge(il_clk) then
-      case iv_bgbgrr_code is 
+      case sv_bgbgrr_codez3 is --iv_bgbgrr_code
         when "0001" => --r   generate G and B
-          ov_r <= maskz2;   
+          ov_r <= maskz5;  --z2  
           ov_g <= std_logic_vector(rgbtemp00(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
           ov_b <= std_logic_vector(rgbtemp11(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
        
         when "0010" => --gr  generate R and B
           ov_r <= std_logic_vector(rgbtemp00(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
-          ov_g <= maskz2;
+          ov_g <= maskz5;
           ov_b <= std_logic_vector(rgbtemp11(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
          
         when "0100" => --gb  generate R and B
           ov_r <= std_logic_vector(rgbtemp00(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
-          ov_g <= maskz2;
+          ov_g <= maskz5;
           ov_b <= std_logic_vector(rgbtemp11(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1));
 
         when "1000" => --b   generate G and R 
           ov_r <= std_logic_vector(rgbtemp11(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1)); --rgbtemp0
           ov_g <= std_logic_vector(rgbtemp00(CI_DSP_PIX_WIDTH -2 downto CI_DSP_PIX_WIDTH -  GI_PIXEL_WIDTH -1)); --rgbtemp1 
-          ov_b <= maskz2;
+          ov_b <= maskz5;
 
         when others =>
           ov_r <= (others=>'0');
