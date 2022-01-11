@@ -9,6 +9,7 @@ use work.comm_types_pkg.all;
 
 entity demosaicing_fifo5 is
 generic( 
+  constant GS_RAM_STYLE          : string  := "block";  -- block/distributed/register
   constant GI_MASK_SIZE          : integer := 3;
   constant GI_PIXEL_DEPTH        : integer := 16; 
   constant GI_IMG_HEIGHT         : integer := 8; 
@@ -42,7 +43,20 @@ signal svn_mask                  : std_logic_vector_xN(GI_MASK_SIZE*GI_MASK_SIZE
 type FIFO_wRAM is array(0 to (GI_IMG_WIDTH -1) ) of std_logic_vector(GI_PIXEL_DEPTH -1 downto 0);
 type MEM_ROWS  is array(0 to (GI_MASK_SIZE -1)) of FIFO_wRAM; 
 
+type FIFO_wRAMv2 is array((GI_IMG_WIDTH -1) downto 0 ) of std_logic_vector(GI_PIXEL_DEPTH -1 downto 0);
+signal fifo_row0                 : FIFO_wRAMv2;
+signal fifo_row1                 : FIFO_wRAMv2;
+signal fifo_row2                 : FIFO_wRAMv2;
+signal fifo_row3                 : FIFO_wRAMv2;
+
 signal fifo_rows                 : MEM_ROWS;
+attribute ram_style              : string;
+attribute ram_style of fifo_rows : signal is gs_ram_style;
+
+attribute ram_style of fifo_row0 : signal is gs_ram_style;
+attribute ram_style of fifo_row1 : signal is gs_ram_style;
+attribute ram_style of fifo_row2 : signal is gs_ram_style;
+attribute ram_style of fifo_row3 : signal is gs_ram_style;
 
 begin
 
@@ -94,8 +108,10 @@ end process update_address;
 process(il_clk)
 begin
   if(rising_edge(il_clk)) then
-    fifo_rows(0)(to_integer(su_addr_wr)) <= svn_mask_top(GI_MASK_SIZE -1); --iv_pixel
-    svn_mask(19)                         <= fifo_rows(0)(to_integer(su_addr_rd));
+   -- fifo_rows(0)(to_integer(su_addr_wr)) <= svn_mask_top(GI_MASK_SIZE -1); --iv_pixel
+   -- svn_mask(19)                         <= fifo_rows(0)(to_integer(su_addr_rd));
+    fifo_row0(to_integer(su_addr_wr)) <= svn_mask_top(GI_MASK_SIZE -1); --iv_pixel
+    svn_mask(19)                         <= fifo_row0(to_integer(su_addr_rd));
   end if;
 end process;
 
@@ -151,8 +167,10 @@ ovn_mask(15)       <= svn_mask(15);
 process(il_clk)
 begin
   if(rising_edge(il_clk)) then
-    fifo_rows(1)(to_integer(su_addr_wr)) <= svn_mask(19);
-    svn_mask(14) <= fifo_rows(1)(to_integer(su_addr_rd));
+    --fifo_rows(1)(to_integer(su_addr_wr)) <= svn_mask(19);
+    --svn_mask(14) <= fifo_rows(1)(to_integer(su_addr_rd));
+    fifo_row1(to_integer(su_addr_wr)) <= svn_mask(19);
+    svn_mask(14) <= fifo_row1(to_integer(su_addr_rd));
   end if;
 end process;
 
@@ -208,8 +226,10 @@ ovn_mask(10)       <= svn_mask(10);
 process(il_clk)
 begin
   if(rising_edge(il_clk)) then
-    fifo_rows(2)(to_integer(su_addr_wr)) <= svn_mask(14);
-    svn_mask(9) <= fifo_rows(2)(to_integer(su_addr_rd));
+    --fifo_rows(2)(to_integer(su_addr_wr)) <= svn_mask(14);
+    --svn_mask(9) <= fifo_rows(2)(to_integer(su_addr_rd));
+    fifo_row2(to_integer(su_addr_wr)) <= svn_mask(14);
+    svn_mask(9) <= fifo_row2(to_integer(su_addr_rd));
   end if;
 end process;
 
@@ -266,8 +286,10 @@ ovn_mask(5)       <= svn_mask(5);
 process(il_clk)
 begin
   if(rising_edge(il_clk)) then
-    fifo_rows(3)(to_integer(su_addr_wr)) <= svn_mask(9);
-    svn_mask(4) <= fifo_rows(3)(to_integer(su_addr_rd));
+    --fifo_rows(3)(to_integer(su_addr_wr)) <= svn_mask(9);
+    --svn_mask(4) <= fifo_rows(3)(to_integer(su_addr_rd));
+    fifo_row3(to_integer(su_addr_wr)) <= svn_mask(9);
+    svn_mask(4) <= fifo_row3(to_integer(su_addr_rd));
   end if;
 end process;
 

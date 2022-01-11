@@ -44,6 +44,24 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 2
 -- Compiling entity demosaicing_shiftreg
 -- Compiling architecture Behavioral of demosaicing_shiftreg
 
+} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_txt_tb.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_txt_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package std_logic_textio
+-- Compiling entity demosaicing_txt_tb
+-- Compiling architecture behavior of demosaicing_txt_tb
+-- Loading entity rd_file_axis
+-- Loading package comm_types_pkg
+-- Loading entity demosaicing
+-- Loading package sim_file_pkg
+-- Loading entity module_testbench
+
 } {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd {0 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
 -- Loading package STANDARD
@@ -90,18 +108,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 2
 -- Loading entity demosaicing_fifo5
 -- Loading entity demosaicing_router
 -- Loading entity demosaicing_convolution
-
-} {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_fifo5.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package MATH_REAL
--- Loading package NUMERIC_STD
--- Loading package comm_types_pkg
--- Compiling entity demosaicing_fifo5
--- Compiling architecture Behavioral of demosaicing_fifo5
--- Loading entity demosaicing_shiftreg
 
 } {} {}} /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_ctrl.vhd {1 {vcom -work work -2008 -explicit -stats=none /home/maikon/Dropbox/git/fpgaip/demosaicing/rtl/demosaicing_ctrl.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.6d Compiler 2018.02 Feb 24 2018
